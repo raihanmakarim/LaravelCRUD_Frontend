@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, KeyboardEvent } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -26,12 +26,15 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editId, setEditId] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [nama, setNama] = useState("");
+
   const [filters, setFilters] = useState({
     nama: "",
     jabatan: "",
     jenis_kelamin: "",
     alamat: "",
   });
+
   const [formData, setFormData] = useState<FormData>({
     nama: "",
     jabatan: "",
@@ -149,6 +152,12 @@ function App() {
     }
   };
 
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      setFilters({ ...filters, nama: nama });
+    }
+  };
+
   return (
     <div>
       <div className="flex justify-between mb-4 gap-4">
@@ -156,8 +165,9 @@ function App() {
           type="text"
           placeholder="Search by Name "
           className="border bg-white border-gray-300 rounded-md py-1 px-2 w-1/3"
-          value={filters.nama}
-          onChange={(e) => setFilters({ ...filters, nama: e.target.value })}
+          value={nama}
+          onChange={(e) => setNama(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
 
         <select
