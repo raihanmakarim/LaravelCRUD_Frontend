@@ -38,32 +38,31 @@ const Table: React.FC<TableProps> = ({ data, onEdit, onDelete }) => {
   console.log(currentPage);
   return (
     <div>
-      <table className="w-full  border-collapse border border-gray-300 bg-white">
+      <table className="w-full  border-collapse   bg-white">
         <thead>
-          <tr>
+          <tr className=" bg-blue-200 	 ">
             {tableHeaders.map((header) => (
-              <th key={header} className="border border-gray-300 px-4 py-2">
+              <th key={header} className=" px-4 py-2 ">
                 {header}
               </th>
             ))}
-            <th className="border border-gray-300 px-4 py-2">Actions</th>
+            <th className=" px-4 py-2">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((item) => (
-            <tr key={item.id}>
-              <td className="border border-gray-300 px-4 py-1">{item.id}</td>
-              <td className="border border-gray-300 px-4 py-1">{item.nama}</td>
-              <td className="border border-gray-300 px-4 py-1">
-                {item.jabatan}
-              </td>
-              <td className="border border-gray-300 px-4 py-1">
-                {item.jenis_kelamin}
-              </td>
-              <td className="border border-gray-300 px-4 py-1">
-                {item.alamat}
-              </td>
-              <td className="border border-gray-300 px-4 py-1flex justify-center space-x-2">
+          {currentPageData.map((item, index) => (
+            <tr
+              className={`  ${
+                index % 2 === 1 && "bg-blue-50  "
+              }  border-gray-300 `}
+              key={item.id}
+            >
+              <td className=" px-8 py-2 ">{item.id}</td>
+              <td className=" px-8 py-2 ">{item.nama}</td>
+              <td className=" px-8 py-2  ">{item.jabatan}</td>
+              <td className=" px-8 py-2 ">{item.jenis_kelamin}</td>
+              <td className=" px-8 py-2 ">{item.alamat}</td>
+              <td className=" px-8 py-2 flex justify-center space-x-2">
                 <button
                   className="text-white bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded"
                   onClick={() => onEdit(item.id)}

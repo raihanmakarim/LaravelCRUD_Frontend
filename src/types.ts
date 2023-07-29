@@ -17,3 +17,10 @@ export interface TableProps {
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
 }
+
+export interface FormData {
+  nama: string;
+  jabatan: string;
+  jenis_kelamin: string;
+  alamat: string;
+}
