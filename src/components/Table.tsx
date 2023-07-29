@@ -37,7 +37,10 @@ const Table: React.FC<TableProps> = ({ data, onEdit, onDelete }) => {
 
   console.log(currentPage);
   return (
-    <div>
+    <div
+      className="flex flex-col justify-between items-center"
+      style={{ minHeight: "600px" }}
+    >
       <table className="w-full  border-collapse   bg-white">
         <thead>
           <tr className=" bg-blue-200 	 ">

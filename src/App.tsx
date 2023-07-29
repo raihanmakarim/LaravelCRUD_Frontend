@@ -74,6 +74,10 @@ function App() {
     setUrl("");
   };
 
+  const clearFilters = () => {
+    setFilters({ nama: "", jabatan: "", jenis_kelamin: "", alamat: "" });
+  };
+
   const handleCloseModal = () => {
     setIsModalOpen(!isModalOpen);
     clearForm();
@@ -193,6 +197,12 @@ function App() {
           <option value="Laki-laki">Laki-laki</option>
           <option value="Perempuan">Perempuan</option>
         </select>
+        <button
+          className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded ml-4"
+          onClick={() => clearFilters()}
+        >
+          Clear
+        </button>
 
         <button
           className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded ml-4"
