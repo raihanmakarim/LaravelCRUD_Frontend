@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TableProps } from "../types";
 
 const ITEMS_PER_PAGE = 10;
@@ -35,7 +35,9 @@ const Table: React.FC<TableProps> = ({ data, onEdit, onDelete }) => {
 
   const tableHeaders = ["ID", "Nama", "Jabatan", "Jenis Kelamin", "Alamat"];
 
-  console.log(currentPage);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [data]);
   return (
     <div
       className="flex flex-col justify-between items-center"
