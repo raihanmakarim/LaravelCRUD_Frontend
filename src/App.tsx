@@ -79,6 +79,7 @@ function App() {
 
   const clearFilters = () => {
     setFilters({ nama: "", jabatan: "", jenis_kelamin: "", alamat: "" });
+    setNama("");
   };
 
   const handleCloseModal = () => {
